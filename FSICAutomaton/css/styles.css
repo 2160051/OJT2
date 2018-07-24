@@ -8,6 +8,12 @@
     ul.topnav li {float: none;}
 }
 
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
+
 html{
 	background: url(../images/bfp1.png) no-repeat center center fixed;
   	background-size: cover;
@@ -217,6 +223,13 @@ ul.topnav li.right {
     color: black;
 }
 
+.centered{
+	position: relative;
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
+}
+
 .hedatu{
 	position: relative;
 	display: flex;
@@ -242,6 +255,16 @@ ul.topnav li.right {
 	width: auto;
 	padding: 10px;
 	z-index: 2;
+}
+
+.id input[type=text]:hover{
+	outline: none;
+	border: 1px solid rgba(255, 238, 51, 0.9);
+}
+
+.id input[type=password]:hover{
+	outline: none;
+	border: 1px solid rgba(255, 238, 51, 0.9);
 }
 
 .id input[type=text]{

@@ -45,8 +45,9 @@
 					<th>First Name</th>
 					<th>Last Name</th>
 					<th>Time-In</th>
+					<th>Date In</th>
 					<th>Time-Out</th>
-					<th>Date</th>
+					<th>Date Out</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -57,20 +58,23 @@
 					while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 						$time_in = date('h:i a', strtotime($row['timeIn']));
 						$time_out = date('h:i a', strtotime($row['timeOut']));
-						$date = date('F j, Y', strtotime($row['date']));
+						$date_in = date('F j, Y', strtotime($row['dateIn']));
+						$date_out = date('F j, Y', strtotime($row['dateOut']));
 						echo "<tr>
 								<td>".$row['id']."</td>
 								<td>".$row['firstName']."</td>
 								<td>".$row['lastName']."</td>
-								<td>".$time_in."</td>";
+								<td>".$time_in."</td>
+								<td>".$date_in."</td>";
+
 						if($row['timeOut'] == NULL || $row['timeOut'] == ""){
 							echo "<td>--------</td>
+								  <td>--------</td>
 								  ";
 						}else{
-							echo "<td>".$time_out."</td>";
+							echo "<td>".$time_out."</td>
+								<td>".$date_out."</td>";
 						}
-								
-							  echo "<td>".$date."</td></tr>";
 					}
 				?>
 			</tbody>

@@ -15,14 +15,14 @@
 
 	<body>
 		<div class="hedatu">
-			<img src="images/logo.png" alt="FSIC Automaton" width="220" style="margin:0 auto;" />
+			<img src="images/logo.svg" alt="FSIC Automaton" width="220" style="margin:0 auto;" />
 		</div>
 		<div class="id">
 			<form method="POST">
 				<div style="margin: 0 auto;text-align: center; font-size: 18px;"><label for="user">ID</label></div> 
-				<input type="text" name="user" class="user" required style="width: 25%;margin: 0 auto; color: black;"><br>
+				<input type="text" name="user" class="user" required style="width: 25%;margin: 0 auto; color: black; height: 10%;"><br>
 				<div style="margin: 0 auto;text-align: center; font-size: 18px;"><label for="password">Password</label></div>
-				<input type="password" name="password" class="user" required style="width: 25%;margin: 0 auto; color: black;"><br>
+				<input type="password" name="password" class="user" required style="width: 25%;margin: 0 auto; color: black; height: 10%;"><br>
 				<div style="margin: 0 auto; width: 40%;display: flex;justify-content: center;align-items: center;">
 					<input type="submit" value="Login" class="loginButton" style="width: 28%; display: inline-block;background-color: #fc4c3f; color:white;">
 				</div>
@@ -34,7 +34,7 @@
 				        $password = $_POST['password'];
 
 				        $query = "SELECT password FROM admin WHERE id = '$user' AND password = '$password';";
-				        $query_two = "SELECT password FROM client WHERE id = '$user' AND password = '$password';";
+				        $query_two = "SELECT password FROM client WHERE id = '$user' AND password = '$password' AND status = 'Active';";
 				        $result = mysqli_query($conn, $query);
 				        $result_two = mysqli_query($conn, $query_two);
 				        $count = mysqli_num_rows($result);
@@ -44,7 +44,7 @@
 				            header('Location: admin.php');
 				        }else if($count_two == 1){
 				        	$_SESSION['user'] = $user;
-				            header('Location: user.php');
+				            header('Location: client.php');
 				        }else{
 				        	echo "<div class='alert'>
 									  <span class='closebtn'>&times;</span> 
@@ -53,9 +53,8 @@
 				        }
 		            }
 				?>
-
-				<div style="margin: 0 auto;text-align: center;"><input type='submit' class="buttonLink" value="Request for an Account"></div>
-			</form>		
+			</form>	
+			<div style="margin: 0 auto;text-align: center;"><form><input type='submit' class="buttonLink" value="Request for an Account" formaction="request.php"></form></div>	
 		</div>
 	
 	<script>
