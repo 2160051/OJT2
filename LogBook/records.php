@@ -37,7 +37,7 @@
 	</ul>
 
 	<div style="margin-top: 3%;font-size: 32px;text-align: center;">Records
-		<br><button type="button" class="btn btn-info" style="float: right;margin-right: 5em;" data-toggle="modal" data-target="#myModal">Add a New Record</button>
+		<br><button type="button" class="btn btn-info" style="float: right;margin-right: 5em;" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus"></span>Add Record</button>
 	</div>
 
   <div class="modal fade" id="myModal" role="dialog">
@@ -155,7 +155,10 @@
 									<td>".$from." - ".$to."<input type='hidden' name='position' value='".$row['position']."'></td>
 									<td>".$weekly." <input type='hidden' name='position' value='".$row['position']."'></td>
 									<td>".$row['contactNo']." <input type='hidden' name='contactNo' value='".$row['contactNo']."'></td>
-									<td style='text-align: center;'><input type='submit' class='btn btn-primary' value='Edit' formaction='edit' style='display: inline-block;'><input type='submit' class='btn btn-danger' value='Remove' formaction='remove' style='display: inline-block;margin-left: 4%;'></td>
+									<td style='text-align: center;'>
+										<button type='submit' class='btn btn-default' formaction='edit' style='display: inline-block;'><span class='glyphicon glyphicon-edit'></span></button>
+										<button type='submit' class='btn btn-danger' formaction='remove' style='display: inline-block;margin-left: 4%;'><span class='glyphicon glyphicon-remove'></span></button>
+									</td>
 									</form>
 								  </tr>";
 						}
