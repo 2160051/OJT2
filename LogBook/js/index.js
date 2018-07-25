@@ -8,9 +8,24 @@ $(document).ready(function() {
 			"buttons": [
 				'colvis',
 				'copyHtml5',
-        'csvHtml5',
-				'excelHtml5',
-        'pdfHtml5',
+					{
+	                extend: 'excelHtml5',
+	                exportOptions: {
+	                    columns: [0, 1, 2, 3, 4, 5, 6]
+	                }
+	            },
+	            {
+	                extend: 'pdfHtml5',
+	                exportOptions: {
+	                    columns: [0, 1, 2, 3, 4, 5, 6]
+	                }
+	            },
+	            {
+	                extend: 'csvHtml5',
+	                exportOptions: {
+	                    columns: [0, 1, 2, 3, 4, 5, 6]
+	                }
+	            },
 				'print'
 			]
 		}

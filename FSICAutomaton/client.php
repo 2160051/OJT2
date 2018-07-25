@@ -46,7 +46,11 @@
 			</div>
 		</nav>
 
-		<div style="margin: 5em;margin-top: 12%; background: none;">FSIC Documents
+		<div style="margin-top: 3%;font-size: 32px;text-align: center;">FSIC Documents
+		<br><button type="button" class="btn btn-info" style="float: right;margin-right: 5em;" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus"></span>Add Record</button>
+		</div>
+
+		<div style="margin: 5em;margin-top: 2%; background: none;">
 		<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
 			<thead>
 				<tr>
