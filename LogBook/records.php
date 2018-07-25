@@ -121,7 +121,8 @@
 					<th>Schedule</th>
 					<th>Days in the Week</th>
 					<th>Contact #</th>
-					<th>Option</th>
+					<th>Edit</th>
+					<th>Delete</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -156,7 +157,8 @@
 									<td>".$weekly." <input type='hidden' name='position' value='".$row['position']."'></td>
 									<td>".$row['contactNo']." <input type='hidden' name='contactNo' value='".$row['contactNo']."'></td>
 									<td style='text-align: center;'>
-										<button type='submit' class='btn btn-default' formaction='edit' style='display: inline-block;'><span class='glyphicon glyphicon-edit'></span></button>
+										<button type='submit' class='btn btn-default' formaction='edit' style='display: inline-block;'><span class='glyphicon glyphicon-edit'></span></button></td>
+									<td style='text-align: center;'>
 										<button type='submit' class='btn btn-danger' formaction='remove' style='display: inline-block;margin-left: 4%;'><span class='glyphicon glyphicon-remove'></span></button>
 									</td>
 									</form>

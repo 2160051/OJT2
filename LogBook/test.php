@@ -1,5 +1,5 @@
 <?php
-    include 'includes/connection.php';
+    include 'includes/connection2.php';
     session_start();
     if(!isset($_SESSION['user'])){
     	header('Location: index.php');
@@ -23,30 +23,10 @@
   	<script src="js/bootstrap.min.js"></script>
 	<link rel="icon" href="images/fsic.ico">
 </head>
-	<body style="background: none;">
+	<body>
+		
 
-		<nav class="navbar navbar-inverse" role="navigation">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="client.php"><img src="images/logo2.png" alt="FSIC" height="35" /></a>
-				</div>
-				<div class="collapse navbar-collapse" id="top-navbar-1">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="client.php">Home</a></li>
-						<li><a href="account.php">Account</a></li>
-						<li><a href="logout.php">Logout</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-
-		<div style="margin: 5em;margin-top: 12%; background: none;">FSIC Documents
+		<div style="margin: 5em;margin-top: 12%;">
 		<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
 			<thead>
 				<tr>
@@ -80,7 +60,7 @@
 								<td>".$row['orNo']."</td>
 								<td>".$row['remarks']."</td>
 								<td>".$row['new']."</td>
-								<td style='text-align:center;'><button type='submit' class='btn btn-default' formaction='edit' style='display: inline-block;'><span class='glyphicon glyphicon-edit'></span></button></td>
+								<td><button type='submit' class='btn btn-default' formaction='edit' style='display: inline-block;'><span class='glyphicon glyphicon-edit'></span></button></td>
 							  </tr>";
 						}
 					?>
