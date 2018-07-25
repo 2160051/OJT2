@@ -47,6 +47,11 @@ body{
 	font-size: 14px;
 }
 
+input:hover{
+	outline: none;
+	border: 1px solid #f7c600;
+}
+
 .navbar {
 	margin-bottom: 0;
 	background: #b0d7f4;

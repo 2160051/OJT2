@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	document.title='Records';
+	document.title='FSIC Documents';
 	$('#example').DataTable(
 		{
 			"dom": '<"dt-buttons"Bf><"clear">lirtp',

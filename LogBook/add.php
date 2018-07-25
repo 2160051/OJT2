@@ -1,9 +1,9 @@
 <?php
 	include 'includes/connection.php';
 
-	$first_name = $_POST['firstName'];
-	$last_name = $_POST['lastName'];
-	$position = $_POST['position'];
+	$first_name = mysqli_real_escape_string($conn, $_POST['firstName']);
+	$last_name = mysqli_real_escape_string($conn, $_POST['lastName']);
+	$position = mysqli_real_escape_string($conn, $_POST['position']);
 	$contact_no = $_POST['contactNo'];
 	$from = $_POST['from'];
 	$from = date("H:i:s", strtotime($from));
