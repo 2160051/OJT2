@@ -147,22 +147,22 @@
 								}
 							}
 
-							echo "<tr>
-									<form action='' method='GET' id='recordVals'>
-									<td>".$row['id']." <input type='hidden' name='id' value='".$row['id']."'></td>
-									<td>".$row['firstName']." <input type='hidden' name='firstName' value='".$row['firstName']."'></td>
-									<td>".$row['lastName']." <input type='hidden' name='lastName' value='".$row['lastName']."'></td>
-									<td>".$row['position']." <input type='hidden' name='position' value='".$row['position']."'></td>
-									<td>".$from." - ".$to."<input type='hidden' name='position' value='".$row['position']."'></td>
-									<td>".$weekly." <input type='hidden' name='position' value='".$row['position']."'></td>
-									<td>".$row['contactNo']." <input type='hidden' name='contactNo' value='".$row['contactNo']."'></td>
-									<td style='text-align: center;'>
-										<button type='submit' class='btn btn-default' formaction='edit' style='display: inline-block;'><span class='glyphicon glyphicon-edit'></span></button></td>
-									<td style='text-align: center;'>
-										<button type='submit' class='btn btn-danger' formaction='remove' style='display: inline-block;margin-left: 4%;'><span class='glyphicon glyphicon-remove'></span></button>
+							echo '<tr>
+									<form action="" method="GET" id="recordVals">
+									<td>'.$row["id"].' <input type="hidden" name="id" value="'.$row["id"].'"></td>
+									<td>'.$row["firstName"].' <input type="hidden" name="firstName" value="'.$row["firstName"].'"></td>
+									<td>'.$row["lastName"].' <input type="hidden" name="lastName" value="'.$row["lastName"].'"></td>
+									<td>'.$row["position"].' <input type="hidden" name="position" value="'.$row["position"].'"></td>
+									<td>'.$from.' - '.$to.'<input type="hidden" name="position" value="'.$row["position"].'"></td>
+									<td>'.$weekly.' <input type="hidden" name="position" value="'.$row["position"].'"></td>
+									<td>'.$row["contactNo"].' <input type="hidden" name="contactNo" value="'.$row["contactNo"].'"></td>
+									<td style="text-align: center;">
+										<button type="submit" class="btn btn-default" formaction="edit" style="display: inline-block;"><span class="glyphicon glyphicon-edit"></span></button></td>
+									<td style="text-align: center;">
+										<button type="submit" class="btn btn-danger" formaction="remove" style="display: inline-block;margin-left: 4%;"><span class="glyphicon glyphicon-remove"></span></button>
 									</td>
 									</form>
-								  </tr>";
+								  </tr>';
 						}
 					}else if($_GET['choice'] == "fireOfficer"){
 						$query = "SELECT * from client WHERE position LIKE '%Fire Officer%' OR position LIKE '%fire officer%';";
@@ -182,18 +182,22 @@
 									$weekly .= $dura[$ctr][0];
 								}
 							}
-							echo "<tr>
-									<form action='' method='GET' id='recordVals'>
-									<td>".$row['id']." <input type='hidden' name='id' value='".$row['id']."'></td>
-									<td>".$row['firstName']." <input type='hidden' name='firstName' value='".$row['firstName']."'></td>
-									<td>".$row['lastName']." <input type='hidden' name='lastName' value='".$row['lastName']."'></td>
-									<td>".$row['position']." <input type='hidden' name='position' value='".$row['position']."'></td>
-									<td>".$from." - ".$to."<input type='hidden' name='position' value='".$row['position']."'></td>
-									<td>".$weekly." <input type='hidden' name='position' value='".$row['position']."'></td>
-									<td>".$row['contactNo']." <input type='hidden' name='contactNo' value='".$row['contactNo']."'></td>
-									<td style='text-align: center;'><input type='submit' class='btn btn-primary' value='Edit' formaction='edit' style='display: inline-block;'><input type='submit' class='btn btn-danger' value='Remove' formaction='remove' style='display: inline-block;margin-left: 4%;'></td>
+							echo '<tr>
+									<form action="" method="GET" id="recordVals">
+									<td>'.$row["id"].' <input type="hidden" name="id" value="'.$row["id"].'"></td>
+									<td>'.$row["firstName"].' <input type="hidden" name="firstName" value="'.$row["firstName"].'"></td>
+									<td>'.$row["lastName"].' <input type="hidden" name="lastName" value="'.$row["lastName"].'"></td>
+									<td>'.$row["position"].' <input type="hidden" name="position" value="'.$row["position"].'"></td>
+									<td>'.$from.' - '.$to.'<input type="hidden" name="position" value="'.$row["position"].'"></td>
+									<td>'.$weekly.' <input type="hidden" name="position" value="'.$row["position"].'"></td>
+									<td>'.$row["contactNo"].' <input type="hidden" name="contactNo" value="'.$row["contactNo"].'"></td>
+									<td style="text-align: center;">
+										<button type="submit" class="btn btn-default" formaction="edit" style="display: inline-block;"><span class="glyphicon glyphicon-edit"></span></button></td>
+									<td style="text-align: center;">
+										<button type="submit" class="btn btn-danger" formaction="remove" style="display: inline-block;margin-left: 4%;"><span class="glyphicon glyphicon-remove"></span></button>
+									</td>
 									</form>
-								  </tr>";
+								  </tr>';
 						}
 					}else if($_GET['choice'] == "inspector"){
 						$query = "SELECT * from client WHERE position LIKE '%Inspector%' OR position LIKE '%inspector%';";
@@ -213,18 +217,22 @@
 									$weekly .= $dura[$ctr][0];
 								}
 							}
-							echo "<tr>
-									<form action='' method='GET' id='recordVals'>
-									<td>".$row['id']." <input type='hidden' name='id' value='".$row['id']."'></td>
-									<td>".$row['firstName']." <input type='hidden' name='firstName' value='".$row['firstName']."'></td>
-									<td>".$row['lastName']." <input type='hidden' name='lastName' value='".$row['lastName']."'></td>
-									<td>".$row['position']." <input type='hidden' name='position' value='".$row['position']."'></td>
-									<td>".$from." - ".$to."<input type='hidden' name='position' value='".$row['position']."'></td>
-									<td>".$weekly." <input type='hidden' name='position' value='".$row['position']."'></td>
-									<td>".$row['contactNo']." <input type='hidden' name='contactNo' value='".$row['contactNo']."'></td>
-									<td style='text-align: center;'><input type='submit' class='btn btn-primary' value='Edit' formaction='edit' style='display: inline-block;'><input type='submit' class='btn btn-danger' value='Remove' formaction='remove' style='display: inline-block;margin-left: 4%;'></td>
+							echo '<tr>
+									<form action="" method="GET" id="recordVals">
+									<td>'.$row["id"].' <input type="hidden" name="id" value="'.$row["id"].'"></td>
+									<td>'.$row["firstName"].' <input type="hidden" name="firstName" value="'.$row["firstName"].'"></td>
+									<td>'.$row["lastName"].' <input type="hidden" name="lastName" value="'.$row["lastName"].'"></td>
+									<td>'.$row["position"].' <input type="hidden" name="position" value="'.$row["position"].'"></td>
+									<td>'.$from.' - '.$to.'<input type="hidden" name="position" value="'.$row["position"].'"></td>
+									<td>'.$weekly.' <input type="hidden" name="position" value="'.$row["position"].'"></td>
+									<td>'.$row["contactNo"].' <input type="hidden" name="contactNo" value="'.$row["contactNo"].'"></td>
+									<td style="text-align: center;">
+										<button type="submit" class="btn btn-default" formaction="edit" style="display: inline-block;"><span class="glyphicon glyphicon-edit"></span></button></td>
+									<td style="text-align: center;">
+										<button type="submit" class="btn btn-danger" formaction="remove" style="display: inline-block;margin-left: 4%;"><span class="glyphicon glyphicon-remove"></span></button>
+									</td>
 									</form>
-								  </tr>";
+								  </tr>';
 						}
 					}else if($_GET['choice'] == "intern"){
 						$query = "SELECT * from client WHERE position LIKE '%Intern%' OR position LIKE '%intern%';";
@@ -244,18 +252,22 @@
 									$weekly .= $dura[$ctr][0];
 								}
 							}
-							echo "<tr>
-									<form action='' method='GET' id='recordVals'>
-									<td>".$row['id']." <input type='hidden' name='id' value='".$row['id']."'></td>
-									<td>".$row['firstName']." <input type='hidden' name='firstName' value='".$row['firstName']."'></td>
-									<td>".$row['lastName']." <input type='hidden' name='lastName' value='".$row['lastName']."'></td>
-									<td>".$row['position']." <input type='hidden' name='position' value='".$row['position']."'></td>
-									<td>".$from." - ".$to."<input type='hidden' name='position' value='".$row['position']."'></td>
-									<td>".$weekly." <input type='hidden' name='position' value='".$row['position']."'></td>
-									<td>".$row['contactNo']." <input type='hidden' name='contactNo' value='".$row['contactNo']."'></td>
-									<td style='text-align: center;'><input type='submit' class='btn btn-primary' value='Edit' formaction='edit' style='display: inline-block;'><input type='submit' class='btn btn-danger' value='Remove' formaction='remove' style='display: inline-block;margin-left: 4%;'></td>
+							echo '<tr>
+									<form action="" method="GET" id="recordVals">
+									<td>'.$row["id"].' <input type="hidden" name="id" value="'.$row["id"].'"></td>
+									<td>'.$row["firstName"].' <input type="hidden" name="firstName" value="'.$row["firstName"].'"></td>
+									<td>'.$row["lastName"].' <input type="hidden" name="lastName" value="'.$row["lastName"].'"></td>
+									<td>'.$row["position"].' <input type="hidden" name="position" value="'.$row["position"].'"></td>
+									<td>'.$from.' - '.$to.'<input type="hidden" name="position" value="'.$row["position"].'"></td>
+									<td>'.$weekly.' <input type="hidden" name="position" value="'.$row["position"].'"></td>
+									<td>'.$row["contactNo"].' <input type="hidden" name="contactNo" value="'.$row["contactNo"].'"></td>
+									<td style="text-align: center;">
+										<button type="submit" class="btn btn-default" formaction="edit" style="display: inline-block;"><span class="glyphicon glyphicon-edit"></span></button></td>
+									<td style="text-align: center;">
+										<button type="submit" class="btn btn-danger" formaction="remove" style="display: inline-block;margin-left: 4%;"><span class="glyphicon glyphicon-remove"></span></button>
+									</td>
 									</form>
-								  </tr>";
+								  </tr>';
 						}
 					}else if($_GET['choice'] == "others"){
 						$query = "SELECT * from client WHERE position NOT LIKE '%Intern%' AND position NOT LIKE '%intern%' AND position NOT LIKE '%Inspector%' AND position NOT LIKE '%inspector%' AND position NOT LIKE '%Fire Officer%' AND position NOT LIKE '%fire officer%';";
@@ -275,18 +287,22 @@
 									$weekly .= $dura[$ctr][0];
 								}
 							}
-							echo "<tr>
-									<form action='' method='GET' id='recordVals'>
-									<td>".$row['id']." <input type='hidden' name='id' value='".$row['id']."'></td>
-									<td>".$row['firstName']." <input type='hidden' name='firstName' value='".$row['firstName']."'></td>
-									<td>".$row['lastName']." <input type='hidden' name='lastName' value='".$row['lastName']."'></td>
-									<td>".$row['position']." <input type='hidden' name='position' value='".$row['position']."'></td>
-									<td>".$from." - ".$to."<input type='hidden' name='position' value='".$row['position']."'></td>
-									<td>".$weekly." <input type='hidden' name='position' value='".$row['position']."'></td>
-									<td>".$row['contactNo']." <input type='hidden' name='contactNo' value='".$row['contactNo']."'></td>
-									<td style='text-align: center;'><input type='submit' class='btn btn-primary' value='Edit' formaction='edit' style='display: inline-block;'><input type='submit' class='btn btn-danger' value='Remove' formaction='remove' style='display: inline-block;margin-left: 4%;'></td>
+							echo '<tr>
+									<form action="" method="GET" id="recordVals">
+									<td>'.$row["id"].' <input type="hidden" name="id" value="'.$row["id"].'"></td>
+									<td>'.$row["firstName"].' <input type="hidden" name="firstName" value="'.$row["firstName"].'"></td>
+									<td>'.$row["lastName"].' <input type="hidden" name="lastName" value="'.$row["lastName"].'"></td>
+									<td>'.$row["position"].' <input type="hidden" name="position" value="'.$row["position"].'"></td>
+									<td>'.$from.' - '.$to.'<input type="hidden" name="position" value="'.$row["position"].'"></td>
+									<td>'.$weekly.' <input type="hidden" name="position" value="'.$row["position"].'"></td>
+									<td>'.$row["contactNo"].' <input type="hidden" name="contactNo" value="'.$row["contactNo"].'"></td>
+									<td style="text-align: center;">
+										<button type="submit" class="btn btn-default" formaction="edit" style="display: inline-block;"><span class="glyphicon glyphicon-edit"></span></button></td>
+									<td style="text-align: center;">
+										<button type="submit" class="btn btn-danger" formaction="remove" style="display: inline-block;margin-left: 4%;"><span class="glyphicon glyphicon-remove"></span></button>
+									</td>
 									</form>
-								  </tr>";
+								  </tr>';
 						}
 					}
 				?>

@@ -137,7 +137,7 @@
 			<input type="hidden" name='origLast' value="<?php echo $last_name; ?>" />
 			<input type="hidden" name='origID' value="<?php echo $id; ?>" />
 			<input type="submit" class="btn btn-primary btn-lg" name="submit" value="Submit" style="float:right;margin-left: 2%;" />
-			<input type="submit" class="btn btn-default btn-lg" formaction="records" value="Go Back" style="float:right;" />
+			<input type="submit" class="btn btn-default btn-lg" formaction="records.php" value="Go Back" style="float:right;" />
 		</form>
 	</div>
 
@@ -165,7 +165,10 @@
 					    window.location = 'records';
 					</script>";
 			}else{
-				echo("Error description: " . mysqli_error($conn));
+				echo "<script>
+						alert('An Error Occured. Please Try Again.');
+						window.location.href = 'records';
+					  </script>";
 			}
 		}
 	?>

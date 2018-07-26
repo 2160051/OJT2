@@ -7,7 +7,12 @@ $(document).ready(function() {
 			"autoWidth": true,
 			"buttons": [
 				'colvis',
-				'copyHtml5',
+				{
+	                extend: 'copyHtml5',
+	                exportOptions: {
+	                    columns: [0, 1, 2, 3, 4, 5, 6]
+	                }
+	            },
 					{
 	                extend: 'excelHtml5',
 	                exportOptions: {
@@ -26,7 +31,12 @@ $(document).ready(function() {
 	                    columns: [0, 1, 2, 3, 4, 5, 6]
 	                }
 	            },
-				'print'
+				{
+	                extend: 'print',
+	                exportOptions: {
+	                    columns: [0, 1, 2, 3, 4, 5, 6]
+	                }
+	            }
 			]
 		}
 	);

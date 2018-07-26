@@ -38,8 +38,8 @@
 				</div>
 				<div class="collapse navbar-collapse" id="top-navbar-1">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="client.php" style="color: #444; border: 0;">Home</a></li>
-						<li><a href="payments.php">Payments</a></li>
+						<li><a href="client.php">Home</a></li>
+						<li><a href="payments.php" style="color: #444; border: 0;">Payments</a></li>
 						<li><a href="account.php">Account</a></li>
 						<li><a href="logout.php">Logout</a></li>
 					</ul>
@@ -47,7 +47,7 @@
 			</div>
 		</nav>
 
-		<div style="margin-top: 3%;font-size: 32px;text-align: center;">FSIC Documents
+		<div style="margin-top: 3%;font-size: 32px;text-align: center;">FSIC Payments
 		<br><button type="button" class="btn btn-info" style="float: right;margin-right: 5em;" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus"></span>Add Document</button>
 		</div>
 
@@ -55,15 +55,13 @@
 		<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
 			<thead>
 				<tr>
+					<th>OR #</th>
 					<th>FSIC #</th>
 					<th>Business</th>
-					<th>Type</th>
 					<th>Owner</th>
-					<th>OR #</th>
-					<th>Received</th>
-					<th>Released</th>
+					<th>Amount Paid</th>
+					<th>Date</th>
 					<th>Remarks</th>
-					<th>New</th>
 					<th>Edit</th>
 				</tr>
 			</thead>
