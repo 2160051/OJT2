@@ -1,7 +1,13 @@
 <?php
 	include 'includes/connection.php';
 
+	session_start();
+	$user = $_SESSION['user'];
 	$fsic_no = $_GET['fsicNo'];
+	$orig_fsic = $_GET['fsicNo'];
+	$orig_or = "";
+	$amount = $_GET['amount'];
+	$pay_Date = $_GET['payDate'];
 	$date_received = $_GET['dateReceived'];
 	$date_released = $_GET['dateReleased'];
 	$name_of_business = $_GET['nameOfBusiness'];
@@ -12,6 +18,7 @@
 		$or_no = "None";
 	}else{
 		$or_no = $_GET['orNo'];
+		$orig_or = $_GET['orNo'];
 	}
 	
 	if ($_GET['remarks'] == "Not Stated") {
@@ -70,12 +77,14 @@
 		</nav>
 
 	<div style="margin-top: 3%;font-size: 32px;text-align: center;">Edit FSIC Document</div>
-	<div style="margin:0 auto;margin-top: 2%;font-size: 18px;width: 35%;">
-		<form action="" method="POST">
+	<div style="margin:0 auto;margin-top: 2%;font-size: 14px;width: 35%;">
+		<form action="editProcess.php" method="POST">
 	        	 <div class="form-group">
 				  <div style="text-align: center;">
 					  <b>FSIC #:</b>&nbsp;&nbsp;&nbsp;<input type="number" class="form-control" id="schedule" name="fsicNo" min="1" max="10000" style="width: 25%;" value="<?php echo $fsic_no; ?>" required>&nbsp;&nbsp;&nbsp;<b>OR #:</b>&nbsp;&nbsp;&nbsp; 
 					  <input type="number" class="form-control" id="schedule" name="orNo" min="1" max="10000" value="<?php echo $or_no; ?>" style="width: 25%;">
+					  <input type="hidden" class="form-control" name="origFSIC" value="<?php echo $orig_fsic; ?>" required>
+					  <input type="hidden" class="form-control" name="origOR" value="<?php echo $orig_or; ?>" required>
 				  </div>
 				 </div>
 				 <div class="form-group">
@@ -97,6 +106,12 @@
 				  </div>
 				 </div>
 				 <div class="form-group">
+			    <div style="text-align: center;">
+					  Amount to be Paid:&nbsp;&nbsp;<input type="number" name="amount" value="<?php echo $amount; ?>" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" class="form-control currency" id="schedule" required style="width: 23%;" />&nbsp;&nbsp;&nbsp;&nbsp;Date Paid:&nbsp;&nbsp;&nbsp; 
+					  <input type="date" class="form-control" id="schedule" name="payDate" style="width: 28%;" value="<?php echo $pay_Date; ?>" required>
+				  </div>
+				 </div>
+				 <div class="form-group">
 				  <label for="remarks">Remarks:</label>
 				  <textarea class="form-control" rows="5" maxlength='500' name='remarks' style="resize: none;"><?php echo $remarks; ?></textarea>
 				 </div>
@@ -111,48 +126,5 @@
 				</div>
 	          	</form>
 	</div>
-
-	<?php 
-		if(isset($_POST['submit'])){
-			$fsic_no = $_POST['fsicNo'];
-			$date_received = $_POST['dateReceived'];
-			$date_released = $_POST['dateReleased'];
-			$name_of_business = mysqli_real_escape_string($conn, $_POST['nameOfBusiness']);
-			$type_of_business = mysqli_real_escape_string($conn, $_POST['typeOfBusiness']);
-			$name_owner = mysqli_real_escape_string($conn, $_POST['nameOwner']);
-
-			if ($_POST['orNo'] == "") {
-				$or_no = "None";
-			}else{
-				$or_no = $_POST['orNo'];
-			}
-			
-			if ($_POST['remarks'] == "") {
-				$remarks = "Not Stated";
-			}else{
-				$remarks = mysqli_real_escape_string($conn, $_POST['remarks']);
-			}
-
-			if (!isset($_POST['new'])) {
-				$new = "Not Stated";
-			}else{
-				$new = "Yes";
-			}
-
-			$query = "UPDATE document SET fsicNo = '$fsic_no', dateReceived = '$date_received', dateReleased = '$date_released', nameOfBusiness = '$name_of_business', typeOfBusiness = '$type_of_business', nameOwner = '$name_owner', orNo = '$or_no', remarks = '$remarks', new = '$new' WHERE fsicNo = '$fsic_no';";
-
-			if(mysqli_query($conn, $query)){
-				echo "<script>
-					    window.location = 'client.php';
-					</script>";
-			}else{
-				echo "<script>
-						alert('An Error Occured. Please Try Again.');
-						window.location.href = 'client.php';
-					  </script>";
-			}
-		}
-	?>
-
 </body>
 </html>

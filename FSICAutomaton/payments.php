@@ -47,7 +47,7 @@
 			</div>
 		</nav>
 
-		<div style="margin-top: 3%;font-size: 32px;text-align: center;">FSIC Payments
+		<div style="margin-top: 3%;font-size: 32px;text-align: center;">FSIC Documents
 		<br><button type="button" class="btn btn-info" style="float: right;margin-right: 5em;" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus"></span>Add Document</button>
 		</div>
 
@@ -67,7 +67,7 @@
 			</thead>
 			<tbody>
 				<?php 
-					$query = "SELECT * FROM document ORDER BY fsicNo;";
+					$query = "SELECT * FROM document JOIN payment USING(orNo) ORDER BY fsicNo;";
 					$result = mysqli_query($conn, $query);
 
 					while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -75,24 +75,21 @@
 						$released = date('F j, Y', strtotime($row['dateReleased']));
 						echo '<tr>
 								<form action="" method="GET" id="recordVals">
+								<td>'.$row["orNo"].'
+									<input type="hidden" name="orNo" value="'.$row["orNo"].'"></td>
 								<td>'.$row["fsicNo"].'
 									<input type="hidden" name="fsicNo" value="'.$row["fsicNo"].'"></td>
 								<td>'.$row["nameOfBusiness"].'
 									<input type="hidden" name="nameOfBusiness" value="'.$row["nameOfBusiness"].'"></td>
-								<td>'.$row["typeOfBusiness"].'
-									<input type="hidden" name="typeOfBusiness" value="'.$row["typeOfBusiness"].'"></td>
 								<td>'.$row["nameOwner"].'
 									<input type="hidden" name="nameOwner" value="'.$row["nameOwner"].'"></td>
-								<td>'.$row["orNo"].'
-									<input type="hidden" name="orNo" value="'.$row["orNo"].'"></td>
-								<td>'.$received.'
-									<input type="hidden" name="dateReceived" value="'.$row["dateReceived"].'"></td>
-								<td>'.$released.'
-									<input type="hidden" name="dateReleased" value="'.$row["dateReleased"].'"></td>
+								<td>'.$row['amtPaid'].'
+									<input type="hidden" name="amount" value="'.$row["amtPaid"].'"></td>
+								<td>'.$row['payDate'].'
+									<input type="hidden" name="payDate" value="'.$row["payDate"].'">
+								</td>
 								<td>'.$row["remarks"].'
 									<input type="hidden" name="remarks" value="'.$row["remarks"].'"></td>
-								<td>'.$row["new"].'
-									<input type="hidden" name="new" value="'.$row["new"].'"></td>
 								<td style="text-align:center;"><button type="submit" class="btn btn-default" formaction="edit" style="display: inline-block;"><span class="glyphicon glyphicon-edit"></span></button></td>
 							  </tr>
 							  </form>';
@@ -101,56 +98,6 @@
 			</tbody>
 		</table>
 	</div>
-
-	<div class="modal fade" id="myModal" role="dialog">
-	    <div class="modal-dialog">   
-	      <div class="modal-content">
-	        <div class="modal-header">
-	          <button type="button" class="close" data-dismiss="modal">&times;</button>
-	          <h4 class="modal-title"><b>Add a New FSIC Document</b></h4>
-	        </div>
-	        <div class="modal-body">
-	          <form action="add" method="POST">
-	        	 <div class="form-group">
-				  <div style="text-align: center;">
-					  <b>FSIC #:</b>&nbsp;&nbsp;&nbsp;<input type="number" class="form-control" id="schedule" name="fsicNo" min="1" max="10000" style="width: 25%;" required>&nbsp;&nbsp;&nbsp;<b>OR #:</b>&nbsp;&nbsp;&nbsp; 
-					  <input type="number" class="form-control" id="schedule" name="orNo" min="1" max="10000" style="width: 25%;">
-				  </div>
-				 </div>
-				 <div class="form-group">
-				  <label for="nameOfBusiness">Name of Business:</label>
-				  <input type="text" class="form-control" id="nameOfBusiness" name="nameOfBusiness" maxlength="120" placeholder="Sari-sari Store" required>
-				 </div>
-				 <div class="form-group">
-				  <label for="typeOfBusiness">Type of Business:</label>
-				  <input type="text" class="form-control" id="typeOfBusiness" name="typeOfBusiness" maxlength="120" placeholder="Sari-sari Store" required>
-				 </div>
-				 <div class="form-group">
-				  <label for="nameOwner">Owner:</label>
-				  <input type="nameOwner" class="form-control" id="nameOwner" name="nameOwner" maxlength="80" placeholder="FirstName LastName" required>
-				 </div>
-				 <div class="form-group">
-				  <div style="text-align: center;">
-					  Date Received:&nbsp;&nbsp;<input type="date" class="form-control" id="schedule" name="dateReceived" style="width: 28%;" required>&nbsp;&nbsp;&nbsp; &nbsp;Date Released:&nbsp;&nbsp;&nbsp; 
-					  <input type="date" class="form-control" id="schedule" name="dateReleased" style="width: 28%;" required>
-				  </div>
-				 </div>
-				 <div class="form-group">
-				  <label for="remarks">Remarks:</label>
-				  <textarea class="form-control" rows="5" maxlength='500' name='remarks' style="resize: none;"></textarea>
-				 </div>
-				 <div class="checkbox">
-				  <label>
-				  <input type="checkbox" id="new" checked name="new">New
-				  </label>
-				 </div>
-				<input type="submit" class="btn btn-primary btn-md" value="Submit" />
-	          	<button type="button" class="btn btn-default btn-md" data-dismiss="modal">Close</button>
-	          	</form>
-	        </div>
-	      </div>
-	    </div>
-	  </div>
 
 	<script src='js/jquery.dataTables.min.js'></script>
 	<script src='js/dataTables.buttons.min.js'></script>
@@ -162,7 +109,7 @@
 	<script src='js/jszip.min.js'></script>
 	<script src='js/pdfmake.min.js'></script>
 	<script src='js/vfs_fonts.js'></script>
-	<script  src="js/index.js"></script>
+	<script  src="js/indextwo.js"></script>
 
 	</body>
 </html>

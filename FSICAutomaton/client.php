@@ -69,7 +69,7 @@
 			</thead>
 			<tbody>
 				<?php 
-					$query = "SELECT * FROM document ORDER BY fsicNo;";
+					$query = "SELECT * FROM document JOIN payment USING(orNo) ORDER BY fsicNo;";
 					$result = mysqli_query($conn, $query);
 
 					while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -94,7 +94,10 @@
 								<td>'.$row["remarks"].'
 									<input type="hidden" name="remarks" value="'.$row["remarks"].'"></td>
 								<td>'.$row["new"].'
-									<input type="hidden" name="new" value="'.$row["new"].'"></td>
+									<input type="hidden" name="new" value="'.$row["new"].'">
+								</td>
+								<input type="hidden" name="payDate" value="'.$row["payDate"].'">
+								<input type="hidden" name="amount" value="'.$row["amtPaid"].'">
 								<td style="text-align:center;"><button type="submit" class="btn btn-default" formaction="edit" style="display: inline-block;"><span class="glyphicon glyphicon-edit"></span></button></td>
 							  </tr>
 							  </form>';
@@ -116,7 +119,7 @@
 	        	 <div class="form-group">
 				  <div style="text-align: center;">
 					  <b>FSIC #:</b>&nbsp;&nbsp;&nbsp;<input type="number" class="form-control" id="schedule" name="fsicNo" min="1" max="10000" style="width: 25%;" required>&nbsp;&nbsp;&nbsp;<b>OR #:</b>&nbsp;&nbsp;&nbsp; 
-					  <input type="number" class="form-control" id="schedule" name="orNo" min="1" max="10000" style="width: 25%;">
+					  <input type="number" class="form-control" id="schedule" name="orNo" min="1" max="10000" required style="width: 25%;">
 				  </div>
 				 </div>
 				 <div class="form-group">
@@ -135,6 +138,12 @@
 				  <div style="text-align: center;">
 					  Date Received:&nbsp;&nbsp;<input type="date" class="form-control" id="schedule" name="dateReceived" style="width: 28%;" required>&nbsp;&nbsp;&nbsp; &nbsp;Date Released:&nbsp;&nbsp;&nbsp; 
 					  <input type="date" class="form-control" id="schedule" name="dateReleased" style="width: 28%;" required>
+				  </div>
+				 </div>
+				<div class="form-group">
+			    <div style="text-align: center;">
+					  Amount to be Paid:&nbsp;&nbsp;<input type="number" name="amount" value="0.00" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" class="form-control currency" id="schedule" required style="width: 23%;" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date Paid:&nbsp;&nbsp;&nbsp; 
+					  <input type="date" class="form-control" id="schedule" name="payDate" style="width: 28%;" required>
 				  </div>
 				 </div>
 				 <div class="form-group">
