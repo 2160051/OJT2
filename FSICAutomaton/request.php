@@ -40,10 +40,10 @@
 				    if(isset($_POST['password'])){
 				    	session_start();
 				        $user = $_POST['id'];
-				        $fname = $_POST['fname'];
-				        $lname = $_POST['lname'];
+				        $fname = mysqli_real_escape_string($conn, $_POST['fname']);
+				        $lname = mysqli_real_escape_string($conn, $_POST['lname']);
 				        $contact = $_POST['contact'];
-				        $pos = $_POST['pos'];
+				        $pos = mysqli_real_escape_string($conn, $_POST['pos']);
 				        $password = $_POST['password'];
 
 				        $query = "SELECT password FROM admin WHERE id = '$user' OR (firstName = '$fname' AND lastName = '$lname');";

@@ -33,6 +33,13 @@
 		$new = "checked";
 	}
 
+	$query = "SELECT profilepicture from client WHERE id = '".$_SESSION['user']."';";
+	$result = mysqli_query($conn, $query);
+	while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+		$profile = $row['profilepicture'];
+	}
+
+	$profile = "images/profilepictures/".$profile;
 ?>
 <!DOCTYPE HTML>
 <html style="overflow: scroll;">
@@ -67,10 +74,15 @@
 				</div>
 				<div class="collapse navbar-collapse" id="top-navbar-1">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="client.php" style="color: #444; border: 0;">Home</a></li>
-						<li><a href="payments.php">Payments</a></li>
-						<li><a href="account.php">Account</a></li>
-						<li><a href="logout.php">Logout</a></li>
+						<li style="padding-top: 14px;padding-bottom: 14px;"><a href="client.php" style="color: #444; border: 0;"><span class="glyphicon glyphicon-home" style="color:#444"></span>&nbsp;&nbsp;Home</a></li>
+						<li style="padding-top: 14px;padding-bottom: 14px;"><a href="payments.php"><span class="glyphicon glyphicon-folder-close"></span>&nbsp;&nbsp;Payments</a></li>
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="<?php echo $profile; ?>" style="width: 50px;height: 50px;border-radius: 50%;" alt="Profile" /></a>
+							<ul class="dropdown-menu" style="background-color: #444;">
+								<li><a href="account.php"><span class="glyphicon glyphicon-cog" style="color:#fff;"></span>&nbsp;&nbsp;Account</a></li>
+								<li><a href="logout.php"><span class="glyphicon glyphicon-log-out" style="color:#fff;"></span>&nbsp;&nbsp;Logout</a></li>
+							</ul>
+						</li>
 					</ul>
 				</div>
 			</div>

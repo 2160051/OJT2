@@ -13,10 +13,15 @@
 		}
 	}
 
-	$query = "SELECT profilepicture from client WHERE id = '".$_SESSION['user']."';";
+	$query = "SELECT * from client WHERE id = '".$_SESSION['user']."';";
 	$result = mysqli_query($conn, $query);
 	while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 		$profile = $row['profilepicture'];
+		$name = $row['firstName']." ".$row['lastName'];
+		$fname = $row['firstName'];
+		$lname = $row['lastName'];
+		$position = $row['position'];
+		$contact_no = $row['contactNo'];
 	}
 
 	$profile = "images/profilepictures/".$profile;
@@ -25,7 +30,7 @@
 <html style="overflow: scroll;">
 <head>
 	<meta charset="UTF-8">
-	<title>FSIC | Payments</title>
+	<title>Error</title>
 	<meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -55,7 +60,7 @@
 				<div class="collapse navbar-collapse" id="top-navbar-1">
 					<ul class="nav navbar-nav navbar-right">
 						<li style="padding-top: 14px;padding-bottom: 14px;"><a href="client.php"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home</a></li>
-						<li style="padding-top: 14px;padding-bottom: 14px;"><a href="payments.php" style="color: #444; border: 0;"><span class="glyphicon glyphicon-folder-close" style="color:#444"></span>&nbsp;&nbsp;Payments</a></li>
+						<li style="padding-top: 14px;padding-bottom: 14px;"><a href="payments.php"><span class="glyphicon glyphicon-folder-close"></span>&nbsp;&nbsp;Payments</a></li>
 						<li class="dropdown">
 							<a class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="<?php echo $profile; ?>" style="width: 50px;height: 50px;border-radius: 50%;" alt="Profile" /></a>
 							<ul class="dropdown-menu" style="background-color: #444;">
@@ -68,68 +73,6 @@
 			</div>
 		</nav>
 
-		<div style="margin-top: 3%;font-size: 32px;text-align: center;">FSIC Payments
-		<br>
-		</div>
-
-		<div style="margin: 5em;margin-top: 2%; background: none;">
-		<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-			<thead>
-				<tr>
-					<th>OR #</th>
-					<th>FSIC #</th>
-					<th>Business</th>
-					<th>Owner</th>
-					<th>Amount Paid</th>
-					<th>Date</th>
-					<th>Remarks</th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php 
-					$query = "SELECT * FROM document JOIN payment USING(orNo) ORDER BY fsicNo;";
-					$result = mysqli_query($conn, $query);
-
-					while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-						$received = date('F j, Y', strtotime($row['dateReceived']));
-						$released = date('F j, Y', strtotime($row['dateReleased']));
-						echo '<tr>
-								<form action="" method="GET" id="recordVals">
-								<td>'.$row["orNo"].'
-									<input type="hidden" name="orNo" value="'.$row["orNo"].'"></td>
-								<td>'.$row["fsicNo"].'
-									<input type="hidden" name="fsicNo" value="'.$row["fsicNo"].'"></td>
-								<td>'.$row["nameOfBusiness"].'
-									<input type="hidden" name="nameOfBusiness" value="'.$row["nameOfBusiness"].'"></td>
-								<td>'.$row["nameOwner"].'
-									<input type="hidden" name="nameOwner" value="'.$row["nameOwner"].'"></td>
-								<td>'.$row['amtPaid'].'
-									<input type="hidden" name="amount" value="'.$row["amtPaid"].'"></td>
-								<td>'.$row['payDate'].'
-									<input type="hidden" name="payDate" value="'.$row["payDate"].'">
-								</td>
-								<td>'.$row["remarks"].'
-									<input type="hidden" name="remarks" value="'.$row["remarks"].'">
-								</td>
-							  </tr>
-							  </form>';
-						}
-					?>
-			</tbody>
-		</table>
-	</div>
-
-	<script src='js/jquery.dataTables.min.js'></script>
-	<script src='js/dataTables.buttons.min.js'></script>
-	<script src='js/buttons.colVis.min.js'></script>
-	<script src='js/buttons.html5.min.js'></script>
-	<script src='js/buttons.print.min.js'></script>
-	<script src='js/dataTables.bootstrap.min.js'></script>
-	<script src='js/buttons.bootstrap.min.js'></script>
-	<script src='js/jszip.min.js'></script>
-	<script src='js/pdfmake.min.js'></script>
-	<script src='js/vfs_fonts.js'></script>
-	<script  src="js/indextwo.js"></script>
-
+		<div style="margin-top:10%;font-size: 32px;text-align: center;color: #878889;">Error</div>
 	</body>
 </html>

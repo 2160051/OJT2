@@ -50,24 +50,21 @@
 						  </script>";
 				}else{
 					echo "<script>
-							alert('An Error Occured. Please Try Again.');
-							window.location.href = 'client.php';
-						  </script>";
+						    window.location = 'error.php';
+						</script>";
 				}
 			}else{
 				echo "<script>
-						alert('An Error Occured. Please Try Again.');
-						window.location.href = 'client.php';
-					  </script>";
+					    window.location = 'error.php';
+					</script>";
 			}
 			echo "<script>
 					window.location.href = 'client.php';
 				  </script>";
 		}else{
 			echo "<script>
-					alert('An Error Occured. Please Try Again.');
-					window.location.href = 'client.php';
-				  </script>";
+				    window.location = 'error.php';
+				</script>";
 		}
 	}
 ?>

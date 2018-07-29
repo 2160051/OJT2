@@ -159,7 +159,7 @@
 				      						<td>".$row['firstName']." ".$row['lastName']."</td>";
 				      				if($row['timeOut'] != NULL){
 				      					echo "<td></td>
-				      						  <td><i class='fa fa-thumb-tack' style='color:#f94040;'></i></td>";
+				      						  <td><span class='glyphicon glyphicon-pushpin' style='color:#f94040;'></span></td>";
 				      					$time_in = strtotime($row['timeIn']);
 				      					$time_out = strtotime($row['timeOut']);
 				      					$date_in = strtotime($row['timeOut']);
@@ -171,7 +171,7 @@
 				      					echo "<td>$rendered</td>";
 				      					echo "</tr>";
 				      				}else{
-				      					echo "<td><i class='fa fa-thumb-tack' style='color: #2dadf7;'></i></td>
+				      					echo "<td><span class='glyphicon glyphicon-pushpin' style='color:#2dadf7;'></span></td>
 				      						  <td></td>";
 				      					date_default_timezone_set('Asia/Manila');
             							$time_now = date("H:i:s");

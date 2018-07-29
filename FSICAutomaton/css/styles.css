@@ -69,8 +69,8 @@ ul.navbar-nav {
 }
 
 .navbar-inverse ul.navbar-nav li a { 
-	padding-top: 20px; 
-	padding-bottom: 20px; 
+	padding-top: 8px; 
+	padding-bottom: 8px; 
 	color: #fff; 
 	border: 0; 
 }
@@ -89,7 +89,10 @@ ul.navbar-nav {
 .navbar-brand {
 	text-indent: -99999px;
 }
-.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand { margin-left: 0; }
+
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand { 
+	margin-left: 0; 
+}
 
 
 /*classes*/
@@ -376,6 +379,24 @@ ul.navbar-nav {
   	justify-content: center;
 }
 
+.list-group li:hover{
+	background-color: #e3e1e1;
+	cursor: pointer;
+}
+
+.profPic{
+	display: inline-block;
+	width: 150px;
+	height:150px;
+	border-radius: 8%;
+}
+
+.profImg{
+	border-radius: 8%;
+	width: 150px;
+	height: 150px;
+}
+
 /*div*/
 #wrap {
    width: 100%;
@@ -397,6 +418,15 @@ ul.navbar-nav {
    color: blue;
    text-decoration: none;
    cursor: pointer;
+}
+
+#inputAsLink:hover{
+	color: #444;
+	text-decoration: underline;
+}
+
+#fileToUpload:hover{
+	border: none!important;
 }
 
 #schedule{
