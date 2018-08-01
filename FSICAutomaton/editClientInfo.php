@@ -38,7 +38,7 @@
 		    	$user = $_SESSION['user'];
 		    	$query = "UPDATE client SET profilepicture = '$file' WHERE id = '$user';";
 		    	if(mysqli_query($conn, $query)){	
-			        header("Location: account.php");
+			        header('Location: account.php', true, 302);
 		    	}else{
 		    		echo "<script>
 						alert('An error occurred. Please try again.');
