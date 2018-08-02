@@ -155,10 +155,10 @@
 		        <div class="modal-body">
 		          <form action="editClientInfo" method="POST" enctype="multipart/form-data">
 		          	Select image to upload:
-    				<input type="file" name="fileToUpload" id="fileToUpload">
+    				<input type="file" name="fileToUpload" id="fileToUpload" class="btn btn-default btn-md">
 					 <input type="hidden" name="editProfile" value="true" />
-					<input type="submit" name="submit" class="btn btn-primary btn-md" value="Submit" />
-		          	<button type="button" class="btn btn-default btn-md" data-dismiss="modal">Close</button>
+					<input type="submit" name="submit" class="btn btn-primary btn-md" value="Submit" style="margin-top: 2%;" />
+		          	<button type="button" class="btn btn-default btn-md" data-dismiss="modal" style="margin-top: 2%;">Close</button>
 		          	</form>
 		        </div>
 		      </div>

@@ -5,7 +5,7 @@
     	header('Location: index.php');
 	}
 
-	$query = "SELECT profilepicture from client WHERE id = '".$_SESSION['user']."';";
+	$query = "SELECT profilepicture from admin WHERE id = '".$_SESSION['user']."';";
 	$result = mysqli_query($conn, $query);
 	while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 		$profile = $row['profilepicture'];
@@ -46,12 +46,14 @@
 				</div>
 				<div class="collapse navbar-collapse" id="top-navbar-1">
 					<ul class="nav navbar-nav navbar-right">
-						<li style="padding-top: 14px;padding-bottom: 14px;"><a href="client.php"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home</a></li>
-						<li style="padding-top: 14px;padding-bottom: 14px;"><a href="payments.php" style="color: #444; border: 0;"><span class="glyphicon glyphicon-folder-close" style="color:#444"></span>&nbsp;&nbsp;Payments</a></li>
+						<li style="padding-top: 14px;padding-bottom: 14px;"><a href="client.php" style="border: 0;"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home</a></li>
+						<li style="padding-top: 14px;padding-bottom: 14px;"><a href="documents.php" style="border: 0;"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;Documents</a></li>
+						<li style="padding-top: 14px;padding-bottom: 14px;"><a href="payment.php" style="color: #444; border: 0;"><span class="glyphicon glyphicon-folder-close" style="color:#444"></span>&nbsp;&nbsp;Payments</a></li>
 						<li class="dropdown">
 							<a class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="<?php echo $profile; ?>" style="width: 50px;height: 50px;border-radius: 50%;" alt="Profile" /></a>
 							<ul class="dropdown-menu" style="background-color: #444;">
-								<li><a href="account.php"><span class="glyphicon glyphicon-cog" style="color:#fff;"></span>&nbsp;&nbsp;Account</a></li>
+								<li><a href="manage.php"><span class="glyphicon glyphicon-cog" style="color:#fff;"></span>&nbsp;&nbsp;Manage User Accounts</a></li>
+								<li><a href="accountSettings.php"><span class="glyphicon glyphicon-cog" style="color:#fff;"></span>&nbsp;&nbsp;Account Settings</a></li>
 								<li><a href="logout.php"><span class="glyphicon glyphicon-log-out" style="color:#fff;"></span>&nbsp;&nbsp;Logout</a></li>
 							</ul>
 						</li>
