@@ -89,7 +89,7 @@
 							if($ctr == 1){
 								echo '<div class="card-c" style="display:inline-block;">
 									<form method="POST" style="font-size:16px;">
-										<button type="submit" formaction="documents.php" class="buttonLinkTwo" style="font-size:16px;">
+										<button type="submit" formaction="documents.php" class="buttonLinkTwo" data-toggle="tooltip" data-placement="right" title="Contact:'.$row['contactNo'].'" style="font-size:16px;">
 										<input type="hidden" name="user" value="'.$row['id'].'" />
 										 <img src="images/profilepictures/'.$row['profilepicture'].'" style="width: 100px;height: 100px;border-radius: 50%;" alt="Profile" />
 										 <br><br>
@@ -100,14 +100,14 @@
 								if($row['status'] == "Active"){
 									echo '<button class="btn btn-warning" style="width: 80%;">Disable Account</button>';
 								}else if($row['status'] == "Disabled"){
-									echo '<button class="btn btn-default" style="width: 80%;">Activate Account</button>';
+									echo '<button class="btn btn-info" style="width: 80%;">Activate Account</button>';
 								}
 								echo '</form> 
 									  </div>';
 							}else if($ctr > 1){
 								echo '<div class="card-c" style="display:inline-block;margin-left: 3%;">
 									<form method="POST" style="font-size:16px;">
-										<button type="submit" formaction="documents.php" class="buttonLinkTwo" style="font-size:16px;">
+										<button type="submit" formaction="documents.php" data-toggle="tooltip" data-placement="right" title="Contact:'.$row['contactNo'].'" class="buttonLinkTwo" style="font-size:16px;">
 										<input type="hidden" name="user" value="'.$row['id'].'" />
 										 <img src="images/profilepictures/'.$row['profilepicture'].'" style="width: 100px;height: 100px;border-radius: 50%;" alt="Profile" />
 										 <br><br>
@@ -118,7 +118,7 @@
 								if($row['status'] == "Active"){
 									echo '<button class="btn btn-warning" style="width: 80%;">Disable Account</button>';
 								}else if($row['status'] == "Disabled"){
-									echo '<button class="btn btn-default" style="width: 80%;">Activate Account</button>';
+									echo '<button class="btn btn-info" style="width: 80%;">Activate Account</button>';
 								}
 								echo '</form> 
 									  </div>';
@@ -130,9 +130,46 @@
 		    	</div>
 		    </div>
 		    <div id="acctRequest" class="tab-pane fade">
-		      	<div class="centered" style="margin-top: 3%;font-size: 24px;">Account Requests
+		      	<div style="text-align: center;margin-top: 3%;font-size: 24px;">Account Requests
+		      		<div class="centered" style="margin-top: 2%;">
 		      		<?php 
+		      			$query = "SELECT * from client WHERE status = 'Pending';";
+		    			$result = mysqli_query($conn, $query);
+		    			$ctr = 1;
 
+		    			while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+							if($ctr == 1){
+								echo '<div class="card-c" style="display:inline-block;">
+									<form method="POST" style="font-size:16px;">
+										<button type="submit" formaction="documents.php" data-toggle="tooltip" data-placement="right" title="Contact:'.$row['contactNo'].'" class="buttonLinkTwo" style="font-size:16px;">
+										<input type="hidden" name="user" value="'.$row['id'].'" />
+										 <img src="images/profilepictures/'.$row['profilepicture'].'" style="width: 100px;height: 100px;border-radius: 50%;" alt="Profile" />
+										 <br><br>
+										 	<b>'.$row['firstName'].' '.$row['lastName'].'</b>
+										 </button><br>
+										 	'.$row['id'].'<br>
+										 	'.$row['position'].'<br><br>
+									 	<button class="btn btn-info" style="width: 80%;">Accept Request</button>
+									 	</form> 
+								  </div>';
+							}else if($ctr > 1){
+								echo '<div class="card-c" style="display:inline-block;margin-left:3%;">
+									<form method="POST" style="font-size:16px;">
+										<button type="submit" formaction="documents.php" data-toggle="tooltip" data-placement="right" title="Contact:'.$row['contactNo'].'" class="buttonLinkTwo" style="font-size:16px;">
+										<input type="hidden" name="user" value="'.$row['id'].'" />
+										 <img src="images/profilepictures/'.$row['profilepicture'].'" style="width: 100px;height: 100px;border-radius: 50%;" alt="Profile" />
+										 <br><br>
+										 	<b>'.$row['firstName'].' '.$row['lastName'].'</b>
+										 </button><br>
+										 	'.$row['id'].'<br>
+										 	'.$row['position'].'<br><br>
+									 	<button class="btn btn-info" style="width: 80%;">Accept Request</button>
+									 	</form> 
+								  </div>';
+							}
+						}
+
+						$ctr++;
 		    		?>
 		    	</div>
 		    </div>
@@ -140,6 +177,7 @@
 	<script>
 		$(document).ready(function(){
 			$('#tabAccount a:first').tab('show');
+			$('[data-toggle="tooltip"]').tooltip(); 
 		});
 	</script>
 	</body>
