@@ -129,12 +129,17 @@
 					  <input type="text" class="form-control" id="contactNo" name="contactNo" value="<?php echo $contact_no; ?>" maxlength="11" minlength="11" required>
 					 </div>
 					 <div class="form-group">
-					  <label for="password" id="newpass">Old Password:</span></label>
-					  <input type="password" class="form-control" id="password" name="passwordOld" maxlength="32" required>
+					  <label for="passwordOld" id="newpass">Old Password:</span></label>
+					  <input type="password" class="form-control" id="passwordOld" name="passwordOld" maxlength="32" required>
 					 </div>
 					 <div class="form-group">
-					  <label for="password" id="confirmnewpass">New Password:</label>
-					  <input type="password" class="form-control" id="password" name="passwordFin" maxlength="32" required>
+					  <label for="passwordFin" id="confirmnewpass">New Password:</label>
+					  <input type="password" class="form-control" id="passwordFin" name="passwordFin" maxlength="32" required>
+					 </div>
+					 <div class="form-group">
+					  <label for="reNewPass">Re-Type New Password:</label>
+					  <input type="password" class="form-control" id="reNewPass" name="reNewPass" maxlength="32" onkeyup="checkPass(); return false;" required>
+					  <span id="notif" class="notif"></span>
 					 </div>
 					 <input type="hidden" name="editAccount" value="true" />
 					<input type="submit" class="btn btn-primary btn-md" value="Submit" />
@@ -166,7 +171,23 @@
 		  </div>
 
 		<script>
-			
+			function checkPass(){
+			    var newPass = document.getElementById('passwordFin');
+			    var reNewPass = document.getElementById('reNewPass');
+			    var message = document.getElementById('notif');
+			    var correct = "#75d635";
+			    var wrong = "#ff6868";
+
+			    if(newPass.value == reNewPass.value){
+			        reNewPass.style.backgroundColor = correct;
+			        message.style.color = correct;
+			        message.innerHTML = "Passwords Match"
+			    }else{
+			        reNewPass.style.backgroundColor = wrong;
+			        message.style.color = wrong;
+			        message.innerHTML = "Passwords Do Not Match"
+			    }
+			}  
 		</script>
 	</body>
 </html>

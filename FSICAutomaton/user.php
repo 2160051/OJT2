@@ -25,7 +25,7 @@
 <html style="overflow: scroll;">
 <head>
 	<meta charset="UTF-8">
-	<title>FSIC | Home</title>
+	<title>FSIC | User</title>
 	<meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -70,5 +70,8 @@
 			</div>
 		</nav>
 
+		<div class="centered" style="width:20%;height:auto;margin-top: 2%;text-align: center;border-right: 2px solid #9a9999;">
+			<img src="<?php echo $profile; ?>" style="width: 150px;height: 150px;border-radius: 50%;" alt="Profile" />
+		</div>
 	</body>
 </html>

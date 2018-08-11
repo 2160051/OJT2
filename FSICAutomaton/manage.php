@@ -25,7 +25,7 @@
 <html style="overflow: scroll;">
 <head>
 	<meta charset="UTF-8">
-	<title>FSIC | Home</title>
+	<title>FSIC | Manage User Accounts</title>
 	<meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -61,7 +61,7 @@
 							<a class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="<?php echo $profile; ?>" style="width: 50px;height: 50px;border-radius: 50%;" alt="Profile" /></a>
 							<ul class="dropdown-menu" style="background-color: #444;">
 								<li><a href="manage.php"><span class="glyphicon glyphicon-cog" style="color:#fff;"></span>&nbsp;&nbsp;Manage User Accounts</a></li>
-								<li><a href="accountSettings.php"><span class="glyphicon glyphicon-cog" style="color:#fff;"></span>&nbsp;&nbsp;Account Settings</a></li>
+								<li><a href="accountSettings.php"><span class="glyphicon glyphicon-cog" style="color:#fff;"></span>&nbsp;&nbsp;Change Password</a></li>
 								<li><a href="logout.php"><span class="glyphicon glyphicon-log-out" style="color:#fff;"></span>&nbsp;&nbsp;Logout</a></li>
 							</ul>
 						</li>
@@ -89,7 +89,7 @@
 							if($ctr == 1){
 								echo '<div class="card-c" style="display:inline-block;">
 									<form method="GET" style="font-size:16px;">
-										<button type="submit" formaction="" class="buttonLinkTwo" data-toggle="tooltip" data-placement="right" title="Contact:'.$row['contactNo'].'" style="font-size:16px;">
+										<button type="submit" formaction="user.php" class="buttonLinkTwo" data-toggle="tooltip" data-placement="right" title="Contact:'.$row['contactNo'].'" style="font-size:16px;">
 										<input type="hidden" name="user" value="'.$row['id'].'" />
 										 <img src="images/profilepictures/'.$row['profilepicture'].'" style="width: 100px;height: 100px;border-radius: 50%;" alt="Profile" />
 										 <br><br>
@@ -109,7 +109,7 @@
 							}else if($ctr > 1){
 								echo '<div class="card-c" style="display:inline-block;margin-left: 3%;">
 									<form method="GET" style="font-size:16px;">
-										<button type="submit" formaction="" data-toggle="tooltip" data-placement="right" title="Contact:'.$row['contactNo'].'" class="buttonLinkTwo" style="font-size:16px;">
+										<button type="submit" formaction="user.php" data-toggle="tooltip" data-placement="right" title="Contact:'.$row['contactNo'].'" class="buttonLinkTwo" style="font-size:16px;">
 										<input type="hidden" name="user" value="'.$row['id'].'" />
 										 <img src="images/profilepictures/'.$row['profilepicture'].'" style="width: 100px;height: 100px;border-radius: 50%;" alt="Profile" />
 										 <br><br>
@@ -145,7 +145,7 @@
 							if($ctr == 1){
 								echo '<div class="card-c" style="display:inline-block;">
 									<form method="GET" style="font-size:16px;">
-										<button type="submit" formaction="" data-toggle="tooltip" data-placement="right" title="Contact:'.$row['contactNo'].'" class="buttonLinkTwo" style="font-size:16px;">
+										<button type="button" data-toggle="tooltip" data-placement="right" title="Contact:'.$row['contactNo'].'" class="buttonLinkTwo" style="font-size:16px;">
 										<input type="hidden" name="user" value="'.$row['id'].'" />
 										 <img src="images/profilepictures/'.$row['profilepicture'].'" style="width: 100px;height: 100px;border-radius: 50%;" alt="Profile" />
 										 <br><br>
@@ -160,7 +160,7 @@
 							}else if($ctr > 1){
 								echo '<div class="card-c" style="display:inline-block;margin-left:3%;">
 									<form method="GET" style="font-size:16px;">
-										<button type="submit" formaction="" data-toggle="tooltip" data-placement="right" title="Contact:'.$row['contactNo'].'" class="buttonLinkTwo" style="font-size:16px;">
+										<button type="button" data-toggle="tooltip" data-placement="right" title="Contact:'.$row['contactNo'].'" class="buttonLinkTwo" style="font-size:16px;">
 										<input type="hidden" name="user" value="'.$row['id'].'" />
 										 <img src="images/profilepictures/'.$row['profilepicture'].'" style="width: 100px;height: 100px;border-radius: 50%;" alt="Profile" />
 										 <br><br>
