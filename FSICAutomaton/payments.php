@@ -3,6 +3,14 @@
     session_start();
     if(!isset($_SESSION['user'])){
     	header('Location: index.php');
+	}else{
+		$query = "SELECT * from admin WHERE id = '".$_SESSION['user']."';";
+		$result = mysqli_query($conn, $query);
+		$count = mysqli_num_rows($result);
+
+		if($count >= 1){
+			header('Location: admin.php');
+		}
 	}
 
 	$query = "SELECT profilepicture from client WHERE id = '".$_SESSION['user']."';";

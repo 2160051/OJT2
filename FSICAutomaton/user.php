@@ -72,7 +72,7 @@
 				</div>
 				<div class="collapse navbar-collapse" id="top-navbar-1">
 					<ul class="nav navbar-nav navbar-right">
-						<li style="padding-top: 14px;padding-bottom: 14px;"><a href="client.php" style="color: #444; border: 0;"><span class="glyphicon glyphicon-home" style="color:#444"></span>&nbsp;&nbsp;Home</a></li>
+						<li style="padding-top: 14px;padding-bottom: 14px;"><a href="client.php" style="border: 0;"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home</a></li>
 						<li style="padding-top: 14px;padding-bottom: 14px;"><a href="documents.php" style="border: 0;"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;Documents</a></li>
 						<li style="padding-top: 14px;padding-bottom: 14px;"><a href="payment.php"><span class="glyphicon glyphicon-folder-close"></span>&nbsp;&nbsp;Payments</a></li>
 						<li class="dropdown">
