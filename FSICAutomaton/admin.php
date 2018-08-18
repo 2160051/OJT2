@@ -20,6 +20,32 @@
 	}
 
 	$profile = "images/profilepictures/".$profile;
+
+	$num_rec = 0;
+    $num_fo = 0;
+    $num_insp = 0;
+    $num_intern = 0;
+    $num_others = 0;
+
+    $query = "SELECT * from client;";
+    $result = mysqli_query($conn, $query);
+    $num_rec = mysqli_num_rows($result);
+
+    $query = "SELECT * from client WHERE position LIKE '%Fire Officer%' OR position LIKE '%fire officer%';";
+    $result = mysqli_query($conn, $query);
+    $num_fo = mysqli_num_rows($result);
+
+    $query = "SELECT * from client WHERE position LIKE '%Inspector%' OR position LIKE '%inspector%';";
+    $result = mysqli_query($conn, $query);
+    $num_insp = mysqli_num_rows($result);
+
+    $query = "SELECT * from client WHERE position LIKE '%Intern%' OR position LIKE '%intern%';";
+    $result = mysqli_query($conn, $query);
+    $num_intern = mysqli_num_rows($result);
+
+    $query = "SELECT * from client WHERE position NOT LIKE '%Intern%' AND position NOT LIKE '%intern%' AND position NOT LIKE '%Inspector%' AND position NOT LIKE '%inspector%' AND position NOT LIKE '%Fire Officer%' AND position NOT LIKE '%fire officer%';";
+    $result = mysqli_query($conn, $query);
+    $num_others = mysqli_num_rows($result);
 ?>
 <!DOCTYPE HTML>
 <html style="overflow: scroll;">
@@ -70,5 +96,38 @@
 			</div>
 		</nav>
 
+		<div class="dashContainer" style="margin-top: 4%;">
+			<div class="card card-a" style="display: inline-block;width:23%; height: auto; padding:30px;">
+				<img src="images/clipboard.png" width="50" style="vertical-align: middle;margin-bottom: 0.75em;" alt="Records">
+		          <a href="records" style="text-decoration: none;"><span style="font-size: 24px;">Records</span></a>
+		          <h1 style="text-align: center;"><?php echo $num_rec; ?></h1><br>
+		          
+		          <div id="wrap">
+				    <div id="left_col">
+				        Inspector<br><br>
+				        Fire Officer<br><br>
+				        Intern<br><br>
+				        Others
+				    </div>
+				    <div id="right_col">
+				    	<form action="manage.php" method="GET">
+				    		<input type="hidden" name="choice" value="inspector">
+				    		<input type="submit" id="inputAsLink" name="val" value="<?php echo $num_insp; ?>"><br><br>
+				    	</form>
+				    	<form action="manage.php" method="GET">
+				    		<input type="hidden" name="choice" value="fireOfficer">
+				    		<input type="submit" id="inputAsLink" name="val" value="<?php echo $num_fo; ?>"><br><br>
+				    	</form>
+				    	<form action="manage.php" method="GET">
+				    		<input type="hidden" name="choice" value="intern">
+				    		<input type="submit" id="inputAsLink" name="val" value="<?php echo $num_intern; ?>"><br><br>
+				    	</form>
+				    	<form action="manage.php" method="GET">
+				    		<input type="hidden" name="choice" value="others">
+				    		<input type="submit" id="inputAsLink" name="val" value="<?php echo $num_others; ?>">
+				    	</form>
+				    </div>
+				</div>
+		</div>
 	</body>
 </html>

@@ -20,6 +20,24 @@
 	}
 
 	$profile = "images/profilepictures/".$profile;
+
+	$user_profile = $_GET['profile'];
+	$user_clicked = $_GET['user'];
+	$name = "";
+	$id = "";
+	$contact = "";
+	$position = "";
+	$status = "";
+
+	$query = "SELECT * FROM client WHERE id = '$user_clicked';";
+	$result = mysqli_query($conn, $query);
+	while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+		$name = $row['firstName']." ".$row['lastName'];
+		$id = $row['id'];
+		$contact = $row['contactNo'];
+		$position = $row['position'];
+		$status = $row['status'];
+	}
 ?>
 <!DOCTYPE HTML>
 <html style="overflow: scroll;">
@@ -70,8 +88,122 @@
 			</div>
 		</nav>
 
-		<div class="centered" style="width:20%;height:auto;margin-top: 2%;text-align: center;border-right: 2px solid #9a9999;">
-			<img src="<?php echo $profile; ?>" style="width: 150px;height: 150px;border-radius: 50%;" alt="Profile" />
+		<div style="width:20%;height:auto;margin-top: 2%;text-align: center;border-right: 2px solid #9a9999;font-size: 18px;">
+			<img src="<?php echo 'images/profilepictures/'.$user_profile; ?>" style="width: 150px;height: 150px;border-radius: 10%;display: inline;" alt="Profile" /><br><br>
+			<table class="centered">
+				<tr>
+					<td>
+						<?php echo $name ?>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<?php echo $id ?>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<?php echo $position ?>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<?php echo $contact ?>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<form method="GET" style="font-size:16px;">
+						<?php 
+							if($status == "Active"){
+								echo '<form>
+									<input type="hidden" name="user" value="'.$id.'" />
+									<input type="hidden" name="profile" value="'.$_GET['profile'].'" />
+									<input type="hidden" name="process" value="disable" />
+									<button type="submit" formaction="processor.php" class="btn btn-warning" style="width: 80%;">Disable Account</button>
+									</form>';
+							}else if($status == "Disabled"){
+								echo '<form>
+									<input type="hidden" name="user" value="'.$id.'" />
+									<input type="hidden" name="profile" value="'.$_GET['profile'].'" />
+									<input type="hidden" name="process" value="activate" />
+									<button type="submit" formaction="processor.php" class="btn btn-info" style="width: 80%;">Activate Account</button>
+									</form>';
+							}
+						?>
+						</form>
+					</td>
+				</tr>
+			</table>
 		</div>
+		<div class="card-b" style="font-size: 14px;max-width:70%;position: absolute;left: 24%;top: 15%;">
+			<table id="example" class="table table-striped table-bordered" cellspacing="0" width="70%">
+				<thead>
+					<tr>
+						<th>FSIC #</th>
+						<th>Business</th>
+						<th>Type</th>
+						<th>Owner</th>
+						<th>OR #</th>
+						<th>Amount Paid</th>
+						<th>Received</th>
+						<th>Released</th>
+						<th>Remarks</th>
+						<th>New</th>
+						<th>Edit</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php 
+						$query = "SELECT * FROM document JOIN payment USING(orNo) JOIN clientdocument USING(orNo) WHERE id = '$id' ORDER BY document.fsicNo;";
+						$result = mysqli_query($conn, $query);
+
+						while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+							$received = date('F j, Y', strtotime($row['dateReceived']));
+							$released = date('F j, Y', strtotime($row['dateReleased']));
+							echo '<tr>
+									<form action="" method="GET" id="recordVals">
+									<td>'.$row["fsicNo"].'
+										<input type="hidden" name="fsicNo" value="'.$row["fsicNo"].'"></td>
+									<td>'.$row["nameOfBusiness"].'
+										<input type="hidden" name="nameOfBusiness" value="'.$row["nameOfBusiness"].'"></td>
+									<td>'.$row["typeOfBusiness"].'
+										<input type="hidden" name="typeOfBusiness" value="'.$row["typeOfBusiness"].'"></td>
+									<td>'.$row["nameOwner"].'
+										<input type="hidden" name="nameOwner" value="'.$row["nameOwner"].'"></td>
+									<td>'.$row["orNo"].'
+										<input type="hidden" name="orNo" value="'.$row["orNo"].'"></td>
+									<td>'.$row["amtPaid"].'
+										<input type="hidden" name="orNo" value="'.$row["orNo"].'"></td>
+									<td>'.$received.'
+										<input type="hidden" name="dateReceived" value="'.$row["dateReceived"].'"></td>
+									<td>'.$released.'
+										<input type="hidden" name="dateReleased" value="'.$row["dateReleased"].'"></td>
+									<td>'.$row["remarks"].'
+										<input type="hidden" name="remarks" value="'.$row["remarks"].'"></td>
+									<td>'.$row["new"].'
+										<input type="hidden" name="new" value="'.$row["new"].'">
+									</td>
+									<input type="hidden" name="payDate" value="'.$row["payDate"].'">
+									<input type="hidden" name="amount" value="'.$row["amtPaid"].'">
+									<td style="text-align:center;"><button type="submit" class="btn btn-default" formaction="edit" style="display: inline-block;"><span class="glyphicon glyphicon-edit"></span></button></td>
+								  </tr>
+								  </form>';
+							}
+						?>
+				</tbody>
+			</table>			
+		</div>
+		<script src='js/jquery.dataTables.min.js'></script>
+		<script src='js/dataTables.buttons.min.js'></script>
+		<script src='js/buttons.colVis.min.js'></script>
+		<script src='js/buttons.html5.min.js'></script>
+		<script src='js/buttons.print.min.js'></script>
+		<script src='js/dataTables.bootstrap.min.js'></script>
+		<script src='js/buttons.bootstrap.min.js'></script>
+		<script src='js/jszip.min.js'></script>
+		<script src='js/pdfmake.min.js'></script>
+		<script src='js/vfs_fonts.js'></script>
+		<script  src="js/index.js"></script>
 	</body>
 </html>

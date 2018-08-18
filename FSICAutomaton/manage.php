@@ -91,6 +91,7 @@
 									<form method="GET" style="font-size:16px;">
 										<button type="submit" formaction="user.php" class="buttonLinkTwo" data-toggle="tooltip" data-placement="right" title="Contact:'.$row['contactNo'].'" style="font-size:16px;">
 										<input type="hidden" name="user" value="'.$row['id'].'" />
+										<input type="hidden" name="profile" value="'.$row['profilepicture'].'" />
 										 <img src="images/profilepictures/'.$row['profilepicture'].'" style="width: 100px;height: 100px;border-radius: 50%;" alt="Profile" />
 										 <br><br>
 										 	<b>'.$row['firstName'].' '.$row['lastName'].'</b>
@@ -111,6 +112,7 @@
 									<form method="GET" style="font-size:16px;">
 										<button type="submit" formaction="user.php" data-toggle="tooltip" data-placement="right" title="Contact:'.$row['contactNo'].'" class="buttonLinkTwo" style="font-size:16px;">
 										<input type="hidden" name="user" value="'.$row['id'].'" />
+										<input type="hidden" name="profile" value="'.$row['profilepicture'].'" />
 										 <img src="images/profilepictures/'.$row['profilepicture'].'" style="width: 100px;height: 100px;border-radius: 50%;" alt="Profile" />
 										 <br><br>
 										 	<b>'.$row['firstName'].' '.$row['lastName'].'</b>
